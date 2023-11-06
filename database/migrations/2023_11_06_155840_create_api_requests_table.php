@@ -14,7 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('api_requests', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('database')->nullable();
+            $table->string('device_id')->nullable();
+            $table->string('temperature_1')->nullable();
+            $table->string('temperature_2')->nullable();
+            $table->string('fan_status_1')->nullable();
+            $table->string('fan_status_2')->nullable();
+            $table->string('fan_status_3')->nullable();
+            $table->string('heater_status')->nullable();
+            $table->integer('oven_time')->nullable();
             $table->timestamps();
         });
     }

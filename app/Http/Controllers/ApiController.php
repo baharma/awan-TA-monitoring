@@ -14,11 +14,9 @@ class ApiController extends Controller
         $this->Api = $Api;
     }
 
-    public function index(){
-        $data = $this->Api;
-        return view('home',compact('data'));
-    }
-    public function statusHistory(){
-
+    public function index(Request $request){
+        $data = $request->all();
+        $this->Api->create($data);
+        return response()->json(['message' => 'API request created successfully']);
     }
 }

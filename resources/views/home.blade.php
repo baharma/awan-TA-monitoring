@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">Dashboard</a>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="mx-auto">
-                <h1>30s</h1>
+                <h1 id="countdown">30s</h1>
             </div>
         </div>
     </nav>
@@ -44,7 +44,7 @@
                         <div class="card-body m-5 p-4">
                             <h5 class="card-title">Temperature 1</h5>
                             <p class="card-text h4" id="temperature_1">
-                                40c
+                                0c
                             </p>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         <div class="card-body m-5 p-4">
                             <h5 class="card-title">Temperature 2</h5>
                             <p class="card-text h4" id="temperature_2">
-                                40c
+                                0c
                             </p>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                     <div class="col-md-8">
                         <div class="card-body m-5 p-4">
                             <h5 class="card-title">Fan Status 1</h5>
-                            <p class="card-text h4" id="temperature_2">
+                            <p class="card-text h4" id="fan_status_1">
                                 On
                             </p>
                         </div>
@@ -103,14 +103,14 @@
                     <div class="col-md-8">
                         <div class="card-body m-5 p-4">
                             <h5 class="card-title">Fan Status 2</h5>
-                            <p class="card-text h4" id="temperature_2">
+                            <p class="card-text h4" id="fan_status_2">
                                 On
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col card rounded-0" >
+            <div class="col card rounded-0">
                 <div class="card rounded-0" style="border: none;">
                     <div class="row g-0">
                         <div class="col-md-4 p-5">
@@ -123,25 +123,27 @@
                         <div class="col-md-8">
                             <div class="card-body m-4 p-2">
                                 <h5 class="card-title">Fan Status 3</h5>
-                                <p class="card-text h4" id="temperature_2">
+                                <p class="card-text h4" id="fan_status_3">
                                     On
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-<hr>
-                <div class="card rounded-0" style="border: none;" >
+                <hr>
+                <div class="card rounded-0" style="border: none;">
                     <div class="row g-0">
                         <div class="col-md-4 p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-                                <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z"/>
-                              </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                class="bi bi-fire" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
+                            </svg>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body m-4 p-2">
                                 <h5 class="card-title">Heater Status</h5>
-                                <p class="card-text h4" id="temperature_2">
+                                <p class="card-text h4" id="heater_status">
                                     On
                                 </p>
                             </div>
@@ -156,23 +158,26 @@
             <div class="card-header">
                 {{$data->device_id ?? "Your Device"}} {{$data->heater_status ?? "heater Off"}}
             </div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Timer</label>
-                    <input type="number" class="form-control" name="time" aria-describedby="emailHelp"
-                        placeholder="123">
-                    <small id="emailHelp" class="form-text text-muted">Input Your Timer To Device</small>
+            <form id="form-timer">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Timer</label>
+                        <input type="number" class="form-control" name="time" aria-describedby="emailHelp"
+                            placeholder="123" id="timerTIme">
+                        <small id="emailHelp" class="form-text text-muted">Input Your Timer To Device</small>
+                    </div>
                 </div>
-            </div>
-            <div class="card-footer text-body-secondary">
-                <button class="btn btn-primary">Send</button>
-            </div>
+                <div class="card-footer text-body-secondary">
+                    <button class="btn btn-primary" id="send-divace" type="button">Send</button>
+                </div>
+            </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="{{asset('js/interaktif.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 
 </html>

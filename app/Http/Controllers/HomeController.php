@@ -19,4 +19,8 @@ class HomeController extends Controller
 
        return view('home',compact('data'));
     }
+    public function getAllData(){
+        $data = ApiRequest::latest('created_at')->first();
+        return response()->json($data);
+    }
 }

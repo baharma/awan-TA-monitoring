@@ -30,31 +30,73 @@ function getAlldata() {
 }
 setInterval(getAlldata, 1000);
 
-
 const send_divace = document.getElementById('send-divace');
 const countdownElement = document.getElementById('countdown');
-let countdownValue = 30; // Nilai awal hitungan mundur (dalam detik)
+let countdownValue = 30; // Initial countdown value in seconds
+let timer; // Declare timer globally
 
 send_divace.addEventListener('click', function (event) {
-    const timer = parseInt(document.getElementById('timerTIme').value);
+    timer = parseInt(document.getElementById('timerTIme').value);
     const form = document.querySelectorAll('form#form-timer');
-    axios.post(`/startoven/${timer}`).then(function(response) {})
+    axios.post(`http://192.168.19.75/startoven${timer}`).then(function (response) {})
     if (!isNaN(timer)) {
         countdownValue = timer;
-        updateCountdown(); // Mulai atau perbarui hitungan mundur saat tombol diklik
+        updateCountdown(); // Start or update countdown when the button is clicked
     }
 });
 
-function updateCountdown() {
-    countdownElement.textContent = countdownValue + 's';
+const stop_divace = document.getElementById('send-btn-danger');
 
-    const countdownInterval = setInterval(function () {
+stop_divace.addEventListener('click', function (event) {
+    axios.post(`http://192.168.19.75/stopoven`).then(function (response) {});
+    clearInterval(countdownInterval); // Stop the countdown
+    countdownElement.textContent = 'Countdown Stopped';
+});
+
+let countdownInterval; // Declare countdownInterval globally
+
+function updateCountdown() {
+    countdownElement.textContent = formatTime(countdownValue);
+
+    countdownInterval = setInterval(function () {
         countdownValue--;
 
         if (countdownValue < 0) {
-            clearInterval(countdownInterval); // Hentikan hitungan mundur saat mencapai 0
+            clearInterval(countdownInterval);
+            countdownElement.textContent = 'Countdown Expired';
         } else {
-            countdownElement.textContent = countdownValue + 's';
+            countdownElement.textContent = formatTime(countdownValue);
         }
-    }, 1000); // Perbarui hitungan mundur setiap 1 detik
+    }, 1000); // Update countdown every 1 second
+}
+
+function formatTime(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+
+    return `${hours}h ${minutes}m ${remainingSeconds}s`;
+}
+
+
+document.getElementById('menit-30').addEventListener('click', function () {
+    updateTimerValue(1800); // Set timer value to 30 minutes
+});
+
+document.getElementById('satu-jam').addEventListener('click', function () {
+    updateTimerValue(3600); // Set timer value to 1 hour (60 minutes)
+});
+
+document.getElementById('dua-jam').addEventListener('click', function () {
+    updateTimerValue(7200); // Set timer value to 2 hours (120 minutes)
+});
+
+document.getElementById('tiga-jam').addEventListener('click', function () {
+    updateTimerValue(10800); // Set timer value to 3 hours (180 minutes)
+});
+
+function updateTimerValue(value) {
+    const timerInput = document.getElementById('timerTIme');
+    const currentTimerValue = parseInt(timerInput.value) || 0; // Get the current value or default to 0
+    timerInput.value = currentTimerValue + value; // Add the new value to the current value
 }

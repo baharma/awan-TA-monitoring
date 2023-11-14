@@ -162,13 +162,24 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Timer</label>
-                        <input type="number" class="form-control" name="time" aria-describedby="emailHelp"
+                        <div class="input-group mb-3">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Input The Time</button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#" id="menit-30">30m</a></li>
+                              <li><a class="dropdown-item" href="#" id="satu-jam">1h</a></li>
+                              <li><a class="dropdown-item" href="#" id="dua-jam">2h</a></li>
+                              <li><a class="dropdown-item" href="#" id="tiga-jam">3h</a></li>
+                            </ul>
+                            <input type="number" class="form-control" name="time" aria-describedby="emailHelp"
                             placeholder="123" id="timerTIme">
+                          </div>
+
                         <small id="emailHelp" class="form-text text-muted">Input Your Timer To Device</small>
                     </div>
                 </div>
                 <div class="card-footer text-body-secondary">
-                    <button class="btn btn-primary" id="send-divace" type="button">Send</button>
+                    <button class="btn btn-primary" id="send-divace" type="button">Start</button>
+                    <button class="btn btn-danger" id="send-btn-danger" type="button">End</button>
                 </div>
             </form>
         </div>

@@ -39,7 +39,7 @@ let timer; // Declare timer globally
 send_divace.addEventListener('click', function (event) {
     timer = parseInt(document.getElementById('timerTIme').value);
     const form = document.querySelectorAll('form#form-timer');
-    axios.post(`http://192.168.19.75/startoven${timer}`).then(function (response) {})
+    axios.get(`http://192.168.19.75/startoven${timer}`).then(function (response) {})
     if (!isNaN(timer)) {
         const m = 20*3;
         const times =  timer *m;
@@ -51,7 +51,7 @@ send_divace.addEventListener('click', function (event) {
 const stop_divace = document.getElementById('send-btn-danger');
 
 stop_divace.addEventListener('click', function (event) {
-    axios.post(`http://192.168.19.75/stopoven`).then(function (response) {});
+    axios.get(`http://192.168.19.75/stopoven`).then(function (response) {});
     clearInterval(countdownInterval); // Stop the countdown
     countdownElement.textContent = 'Countdown Stopped';
 });

@@ -35,12 +35,15 @@ const countdownElement = document.getElementById('countdown');
 let countdownValue = 30; // Initial countdown value in seconds
 let timer; // Declare timer globally
 
+
 send_divace.addEventListener('click', function (event) {
     timer = parseInt(document.getElementById('timerTIme').value);
     const form = document.querySelectorAll('form#form-timer');
     axios.post(`http://192.168.19.75/startoven${timer}`).then(function (response) {})
     if (!isNaN(timer)) {
-        countdownValue = timer;
+        const m = 20*3;
+        const times =  timer *m;
+        countdownValue = times ;
         updateCountdown(); // Start or update countdown when the button is clicked
     }
 });
@@ -74,6 +77,8 @@ function formatTime(seconds) {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = seconds % 60;
+
+
 
     return `${hours}h ${minutes}m ${remainingSeconds}s`;
 }

@@ -35,15 +35,15 @@ const countdownElement = document.getElementById('countdown');
 let countdownValue = 30; // Initial countdown value in seconds
 let timer; // Declare timer globally
 
-
 send_divace.addEventListener('click', function (event) {
     timer = parseInt(document.getElementById('timerTIme').value);
     const form = document.querySelectorAll('form#form-timer');
-    axios.get(`http://192.168.19.75:80/startoven${timer}`).then(function (response) {})
+    const url = `http://192.168.217.75:80/startoven${timer}`;
+    axios.get(url).then(function (response) {})
     if (!isNaN(timer)) {
-        const m = 20*3;
-        const times =  timer *m;
-        countdownValue = times ;
+        const data = 20*3;
+
+        countdownValue = timer * data ;
         updateCountdown(); // Start or update countdown when the button is clicked
     }
 });
@@ -51,7 +51,7 @@ send_divace.addEventListener('click', function (event) {
 const stop_divace = document.getElementById('send-btn-danger');
 
 stop_divace.addEventListener('click', function (event) {
-    axios.get(`http://192.168.19.75:80/stopoven`).then(function (response) {});
+    axios.get(`http://192.168.217.75:80/stopoven`).then(function (response) {});
     clearInterval(countdownInterval); // Stop the countdown
     countdownElement.textContent = 'Countdown Stopped';
 });
@@ -83,19 +83,19 @@ function formatTime(seconds) {
 
 
 document.getElementById('menit-30').addEventListener('click', function () {
-    updateTimerValue(30); // Set timer value to 30 minutes
+    updateTimerValue(1800); // Set timer value to 30 minutes
 });
 
 document.getElementById('satu-jam').addEventListener('click', function () {
-    updateTimerValue(60); // Set timer value to 1 hour (60 minutes)
+    updateTimerValue(3600); // Set timer value to 1 hour (60 minutes)
 });
 
 document.getElementById('dua-jam').addEventListener('click', function () {
-    updateTimerValue(120); // Set timer value to 2 hours (120 minutes)
+    updateTimerValue(7200); // Set timer value to 2 hours (120 minutes)
 });
 
 document.getElementById('tiga-jam').addEventListener('click', function () {
-    updateTimerValue(180); // Set timer value to 3 hours (180 minutes)
+    updateTimerValue(10800); // Set timer value to 3 hours (180 minutes)
 });
 
 function updateTimerValue(value) {

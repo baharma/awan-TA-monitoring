@@ -78,26 +78,24 @@ function formatTime(seconds) {
     const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = seconds % 60;
 
-
-
     return `${hours}h ${minutes}m ${remainingSeconds}s`;
 }
 
 
 document.getElementById('menit-30').addEventListener('click', function () {
-    updateTimerValue(1800); // Set timer value to 30 minutes
+    updateTimerValue(30); // Set timer value to 30 minutes
 });
 
 document.getElementById('satu-jam').addEventListener('click', function () {
-    updateTimerValue(3600); // Set timer value to 1 hour (60 minutes)
+    updateTimerValue(60); // Set timer value to 1 hour (60 minutes)
 });
 
 document.getElementById('dua-jam').addEventListener('click', function () {
-    updateTimerValue(7200); // Set timer value to 2 hours (120 minutes)
+    updateTimerValue(120); // Set timer value to 2 hours (120 minutes)
 });
 
 document.getElementById('tiga-jam').addEventListener('click', function () {
-    updateTimerValue(10800); // Set timer value to 3 hours (180 minutes)
+    updateTimerValue(180); // Set timer value to 3 hours (180 minutes)
 });
 
 function updateTimerValue(value) {

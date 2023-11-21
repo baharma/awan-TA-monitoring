@@ -23,4 +23,9 @@ class HomeController extends Controller
         $data = ApiRequest::latest('created_at')->first();
         return response()->json($data);
     }
+    public function getHistory(){
+        $data = ApiRequest::latest()->paginate(10);
+        return view('history', compact('data'));
+
+    }
 }

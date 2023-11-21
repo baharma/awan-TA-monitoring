@@ -100,6 +100,6 @@ document.getElementById('tiga-jam').addEventListener('click', function () {
 
 function updateTimerValue(value) {
     const timerInput = document.getElementById('timerTIme');
-    const currentTimerValue = parseInt(timerInput.value) || 0; // Get the current value or default to 0
+    const currentTimerValue = parseInt(timerInput.value) || 0; // Get the current value osr default to 0
     timerInput.value = currentTimerValue + value; // Add the new value to the current value
 }

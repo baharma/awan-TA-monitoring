@@ -64,7 +64,7 @@
         <div class="row row-componen">
             <div class="card col rounded-0">
                 <div class="row g-0">
-                    <div class="col-md-4 p-5">
+                    <div class="col-md-4 p-5 row-sf">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
                             class="bi bi-thermometer-half" viewBox="0 0 16 16">
                             <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415z" />
@@ -84,7 +84,7 @@
             </div>
             <div class="card col rounded-0">
                 <div class="row g-0">
-                    <div class="col-md-4 p-5">
+                    <div class="col-md-4 p-5 row-sf">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
                             class="bi bi-thermometer-half" viewBox="0 0 16 16">
                             <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415z" />
@@ -106,7 +106,7 @@
         <div class="row row-componen">
             <div class="card col rounded-0">
                 <div class="row g-0 row-componen" style="margin: auto">
-                    <div class="col-md-4 p-5">
+                    <div class="col-md-4 p-5 row-sf">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
                             class="bi bi-wind" viewBox="0 0 16 16">
                             <path
@@ -123,9 +123,9 @@
                     </div>
                 </div>
             </div>
-            <div class="card col rounded-0">
-                <div class="row g-0" style="margin: auto">
-                    <div class="col-md-4 p-5">
+            <div class="card col rounded-0 row-componen ras">
+                <div class="row g-0 row-componen " style="margin: auto">
+                    <div class="col-md-4 p-5 row-sf">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
                             class="bi bi-wind" viewBox="0 0 16 16">
                             <path
@@ -143,11 +143,11 @@
                 </div>
             </div>
             <div class="col card rounded-0">
-                <div class="card rounded-0" style="border: none;">
-                    <div class="row g-0">
+                <div class="card rounded-0 row-sf"  style="border: none;">
+                    <div class="row g-0 row-componen">
                         <div class="col-md-4 p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                                class="bi bi-wind" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor"
+                                class="bi bi-wind test-svg" viewBox="0 0 16 16">
                                 <path
                                     d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5zm-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2zM0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5z" />
                             </svg>
@@ -164,10 +164,10 @@
                 </div>
                 <hr>
                 <div class="card rounded-0" style="border: none;">
-                    <div class="row g-0">
+                    <div class="row  g-0 row-sf">
                         <div class="col-md-4 p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                                class="bi bi-fire" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor"
+                                class="bi bi-fire test-svg" viewBox="0 0 16 16">
                                 <path
                                     d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
                             </svg>

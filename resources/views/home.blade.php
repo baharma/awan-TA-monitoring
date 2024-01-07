@@ -8,6 +8,7 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/update.css')}}">
 </head>
 
 <body>
@@ -29,7 +30,38 @@
         </div>
     </nav>
     <div class="container p-4">
-        <div class="row">
+        <div class="card text-center">
+            <div class="card-header">
+                {{$data->device_id ?? "Your Device"}} {{$data->heater_status ?? "heater Off"}}
+            </div>
+            <form id="form-timer">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Timer</label>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Input The Time</button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#" id="menit-30">30m</a></li>
+                              <li><a class="dropdown-item" href="#" id="satu-jam">1h</a></li>
+                              <li><a class="dropdown-item" href="#" id="dua-jam">2h</a></li>
+                              <li><a class="dropdown-item" href="#" id="tiga-jam">3h</a></li>
+                            </ul>
+                            <input type="number" class="form-control" name="time" aria-describedby="emailHelp"
+                            placeholder="123" id="timerTIme">
+                          </div>
+
+                        <small id="emailHelp" class="form-text text-muted">Input Your Timer To Device</small>
+                    </div>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    <button class="btn btn-primary" id="send-divace" type="button">Start</button>
+                    <button class="btn btn-danger" id="send-btn-danger" type="button">End</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container p-4">
+        <div class="row row-componen">
             <div class="card col rounded-0">
                 <div class="row g-0">
                     <div class="col-md-4 p-5">
@@ -71,9 +103,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row row-componen">
             <div class="card col rounded-0">
-                <div class="row g-0" style="margin: auto">
+                <div class="row g-0 row-componen" style="margin: auto">
                     <div class="col-md-4 p-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
                             class="bi bi-wind" viewBox="0 0 16 16">
@@ -153,37 +185,7 @@
             </div>
         </div>
     </div>
-    <div class="container p-4">
-        <div class="card text-center">
-            <div class="card-header">
-                {{$data->device_id ?? "Your Device"}} {{$data->heater_status ?? "heater Off"}}
-            </div>
-            <form id="form-timer">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Timer</label>
-                        <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Input The Time</button>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#" id="menit-30">30m</a></li>
-                              <li><a class="dropdown-item" href="#" id="satu-jam">1h</a></li>
-                              <li><a class="dropdown-item" href="#" id="dua-jam">2h</a></li>
-                              <li><a class="dropdown-item" href="#" id="tiga-jam">3h</a></li>
-                            </ul>
-                            <input type="number" class="form-control" name="time" aria-describedby="emailHelp"
-                            placeholder="123" id="timerTIme">
-                          </div>
 
-                        <small id="emailHelp" class="form-text text-muted">Input Your Timer To Device</small>
-                    </div>
-                </div>
-                <div class="card-footer text-body-secondary">
-                    <button class="btn btn-primary" id="send-divace" type="button">Start</button>
-                    <button class="btn btn-danger" id="send-btn-danger" type="button">End</button>
-                </div>
-            </form>
-        </div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>

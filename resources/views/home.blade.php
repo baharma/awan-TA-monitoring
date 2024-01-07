@@ -29,7 +29,7 @@
             </div>
         </div>
     </nav>
-    <div class="container p-4">
+    <div class=" p-4">
         <div class="card text-center">
             <div class="card-header">
                 {{$data->device_id ?? "Your Device"}} {{$data->heater_status ?? "heater Off"}}
@@ -60,7 +60,7 @@
             </form>
         </div>
     </div>
-    <div class="container p-4">
+    <div class=" p-4">
         <div class="row row-componen">
             <div class="card col rounded-0">
                 <div class="row g-0">
